@@ -3,12 +3,12 @@ Suit = Backbone.Model.extend({
 		name: 'spade'
 	},
 	validate: function(attributes) {
-		if ($.inArray(attributes.name, ['spade', 'heart', 'club', 'diamond']) == -1) {
+		if ($.inArray(attributes.name, this.constructor.getSuitNames()) == -1) {
 			return 'Invalid suit name';
 		}
 	},
 	initialize: function() {
-		console.debug("Suit initialized");
+		console.debug("Suit " + this.get('name') + " initialized");
 	},
 	getColor: function() {
 		var name = this.get('name');
@@ -16,5 +16,9 @@ Suit = Backbone.Model.extend({
 			return 'black';
 		}
 		return 'red';
+	}
+}, {
+	getSuitNames: function() {
+		return ['spade', 'heart', 'club', 'diamond'];
 	}
 });
