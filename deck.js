@@ -7,6 +7,21 @@ Deck = Backbone.Model.extend({
 	},
 	size: function() {
 		return this.get('cards').length;
+	},
+	shuffle: function() {
+		/* Modern Fisher-Yates:
+		To shuffle an array a of n elements (indices 0..n-1):
+		  for i from n − 1 downto 1 do
+		       j = random integer with 0 ≤ j ≤ i
+		       exchange a[j] and a[i] */
+		var cards = this.get('cards');
+		for (var i=this.size() - 1; i >= 1; i--) {
+			var j = Math.floor(Math.random() * (i+1));
+			var temp = cards[i];
+			cards[i] = cards[j];
+			cards[j] = temp;
+		}
+		this.set({cards: cards});
 	}
 }, {
 	generate: function() {
