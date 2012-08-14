@@ -5,6 +5,6 @@ StartView = Backbone.View.extend({
 	},
 	render: function() {
 		var template = _.template($('#start-view-template').html(), {});
-		this.el.html(template);
+		$(this.el).html(template);
 	}
 });
