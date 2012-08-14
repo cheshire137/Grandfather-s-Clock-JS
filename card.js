@@ -1,6 +1,6 @@
 Card = Backbone.Model.extend({
 	defaults: {
-	    name: 'ace',
+		name: 'ace',
 		suit: new Suit()
 	},
 	validate: function(attributes) {
@@ -8,7 +8,7 @@ Card = Backbone.Model.extend({
 			return 'Invalid card name';
 		}
 	},
-    initialize: function() {
-        console.debug("Card initialized");
-    }
+	initialize: function() {
+		console.debug("Card initialized");
+	}
 });
