@@ -24,15 +24,26 @@ Deck = Backbone.Model.extend({
 		this.set({cards: cards});
 	}
 }, {
-	generate: function() {
+	generate: function(cardsToSkip) {
+		cardsToSkip = typeof cardsToSkip !== 'undefined' ? cardsToSkip : [];
 		var cardNames = Card.getCardNames();
 		var suitNames = Suit.getSuitNames();
 		var cards = [];
 		for (var i=0; i<cardNames.length; i++) {
+			var cardName = cardNames[i];
 			for (var j=0; j<suitNames.length; j++) {
-				cards.push(
-					new Card({name: cardNames[i], suit: suitNames[j]})
-				);
+				var suitName = suitNames[j];
+				var card = new Card({name: cardName, suit: suitName});
+				var result = -1;
+				$.each(cardsToSkip, function(idx, cardToSkip) {
+					if (card.equals(cardToSkip)) {
+						result = idx;
+						return false;
+					}
+				});
+				if (-1 == result) {
+					cards.push(card);
+				}
 			}
 		}
 		return new Deck({cards: cards});

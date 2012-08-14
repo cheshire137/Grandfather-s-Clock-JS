@@ -10,6 +10,23 @@ Card = Backbone.Model.extend({
 	},
 	initialize: function() {
 		console.debug(this.get('name') + ' of ' + this.get('suit').get('name') + 's initialized');
+	},
+	compare: function(other) {
+		var thisSuit = this.get('suit');
+		var otherSuit = other.get('suit');
+		var suitCompare = thisSuit.compare(otherSuit);
+		if (suitCompare < 0) {
+			return -1;
+		}
+		if (suitCompare > 0) {
+			return 1;
+		}
+		var thisName = this.get('name');
+		var otherName = other.get('name');
+		return thisName.localeCompare(otherName);
+	},
+	equals: function(other) {
+		return this.compare(other) == 0;
 	}
 }, {
 	getCardNames: function() {

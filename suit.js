@@ -16,6 +16,11 @@ Suit = Backbone.Model.extend({
 			return 'black';
 		}
 		return 'red';
+	},
+	compare: function(other) {
+		var thisName = this.get('name');
+		var otherName = other.get('name');
+		return thisName.localeCompare(otherName);
 	}
 }, {
 	getSuitNames: function() {
