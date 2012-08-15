@@ -5,10 +5,16 @@ Deck = Backbone.Model.extend({
 	initialize: function() {
 		console.debug("Deck initialized with " + this.size() + " cards");
 	},
+	getCard: function() {
+		var card = this.get('cards').shift();
+		console.debug("\tGot " + card.get('name') + " of " + card.get('suit').get('name') + "s");
+		return card;
+	},
 	size: function() {
 		return this.get('cards').length;
 	},
 	shuffle: function() {
+		console.debug("Shuffling deck");
 		/* Modern Fisher-Yates:
 		To shuffle an array a of n elements (indices 0..n-1):
 		  for i from n − 1 downto 1 do
@@ -33,7 +39,7 @@ Deck = Backbone.Model.extend({
 			var cardName = cardNames[i];
 			for (var j=0; j<suitNames.length; j++) {
 				var suitName = suitNames[j];
-				var card = new Card({name: cardName, suit: suitName});
+				var card = new Card({name: cardName, suit: new Suit({name: suitName})});
 				var result = -1;
 				$.each(cardsToSkip, function(idx, cardToSkip) {
 					if (card.equals(cardToSkip)) {

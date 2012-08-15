@@ -9,7 +9,7 @@ Card = Backbone.Model.extend({
 		}
 	},
 	initialize: function() {
-		console.debug(this.get('name') + ' of ' + this.get('suit').get('name') + 's initialized');
+		//console.debug(this.get('name') + ' of ' + this.get('suit').get('name') + 's initialized');
 	},
 	compare: function(other) {
 		var thisSuit = this.get('suit');

@@ -414,13 +414,11 @@ body {
 	top: 0.5em;
 }
 #credits {
-	position: absolute;
-	left: 0;
-	bottom: 0;
 	width: 100%;
 	background-color: rgba(0,0,0,0.5);
 	font-size: 12px;
 	color: #C69974;
+	margin-top: 0.5in;
 }
 	#credits a,
 	#credits a:link,
@@ -433,8 +431,8 @@ body {
 		color: #f9f9f9;
 	}
 	#credits p {
-		margin: 1em;
-		padding: 0;
+		padding: 1em;
+		margin: 0;
 	}
 .foundation {
 	width: 1.5in;
@@ -495,6 +493,9 @@ body {
 	margin-left: -1.25in;
 	top: 3.45in;
 }
+.foundations {
+	height: 6in;
+}
 .suit-club .suit:before {
 	content: "\2663";
 }
@@ -506,4 +507,34 @@ body {
 }
 .suit-spade .suit:before {
 	content: "\2660";
+}
+.tableau {
+	width: 14in;
+	margin: 0 auto;
+}
+	.tableau .column {
+		width: 1.5in;
+		float: left;
+		margin-right: 0.25in;
+	}
+		.tableau .column .foundation {
+			position: relative;
+			height: auto;
+			min-height: 2.1in;
+			left: 0;
+		}
+			.tableau .column .foundation .card-container {
+				min-width: 1.4in;
+				min-height: 1.96in;
+			}
+			.tableau .column .foundation .card-container-1,
+			.tableau .column .foundation .card-container-2,
+			.tableau .column .foundation .card-container-3,
+			.tableau .column .foundation .card-container-4 {
+				margin-bottom: -1.5in;
+			}
+.tableau:after {
+	content: "";
+	display: table;
+	clear: left;
 }
