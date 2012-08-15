@@ -292,6 +292,91 @@ nav a:hover{
 body {
 	background: url('../img/webtreats_wood-pattern7-512.png');
 }
+.card {
+	background-color: white;
+	width: 1.4in;
+	height: 1.96in;
+	position: relative;
+	top: 0.07in;
+	margin: 0 auto;
+	-webkit-box-shadow:  0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+	box-shadow:  0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+	.card .card-name {
+		line-height: 1;
+		font-size: 0.2in;
+	}
+	.card .card-name.bottom {
+		position: absolute;
+		right: 0.1in;
+		bottom: 0.1in;
+	}
+	.card .card-name.top {
+		left: 0.1in;
+		position: absolute;
+		top: 0.1in;
+	}
+	.card .suit-container {
+		position: relative;
+		width: 1.2in;
+		margin: 0 auto;
+		top: 0.3in;
+		height: 1.36in;
+		overflow: hidden;
+		font-size: 0.2in;
+		line-height: 1;
+	}
+.card-2 .card-name:before {
+	content: "2";
+}
+.card-3 .card-name:before {
+	content: "3";
+}
+.card-4 .card-name:before {
+	content: "4";
+}
+.card-5 .card-name:before {
+	content: "5";
+}
+.card-6 .card-name:before {
+	content: "6";
+}
+.card-7 .card-name:before {
+	content: "7";
+}
+.card-8 .card-name:before {
+	content: "8";
+}
+.card-9 .card-name:before {
+	content: "9";
+}
+.card-10 .card-name:before {
+	content: "10";
+}
+.card-ace .card-name:before {
+	content: "A";
+}
+.card-club,
+.card-spade {
+	color: black;
+}
+.card-diamond,
+.card-heart {
+	color: #C21414;
+}
+.card-jack .card-name:before {
+	content: "J";
+}
+.card-king .card-name:before {
+	content: "K";
+}
+.card-queen .card-name:before {
+	content: "Q";
+}
 #container {
 	position: relative;
 	width: 100%;
@@ -328,6 +413,9 @@ body {
 	position: absolute;
 	left: 50%;
 	background-color: rgba(0,0,0,0.3);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
 }
 #foundation-12 {
 	margin-left: -1.25in;
@@ -375,4 +463,16 @@ body {
 #foundation-6 {
 	margin-left: -1.25in;
 	top: 3.45in;
+}
+.suit-club .suit:before {
+	content: "\2663";
+}
+.suit-diamond .suit:before {
+	content: "\2666";
+}
+.suit-heart .suit:before {
+	content: "\2665";
+}
+.suit-spade .suit:before {
+	content: "\2660";
 }
