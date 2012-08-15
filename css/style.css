@@ -324,17 +324,48 @@ body {
 		position: relative;
 		width: 1.2in;
 		margin: 0 auto;
-		top: 0.3in;
-		height: 1.36in;
+		top: 0.2in;
+		height: 1.56in;
 		overflow: hidden;
 		font-size: 0.2in;
 		line-height: 1;
 	}
+		.card .suit-container .suit {
+			position: relative;
+		}
 .card-2 .card-name:before {
 	content: "2";
 }
+.card-2 .suit {
+	font-size: 0.5in;
+}
+.card-2 .suit-1,
+.card-2 .suit-2 {
+	text-align: center;
+}
+.card-2 .suit-2 {
+	top: 0.6in;
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
 .card-3 .card-name:before {
 	content: "3";
+}
+.card-3 .suit {
+	font-size: 0.5in;
+}
+.card-3 .suit-1,
+.card-3 .suit-2,
+.card-3 .suit-3 {
+	text-align: center;
+}
+.card-3 .suit-3 {
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
 }
 .card-4 .card-name:before {
 	content: "4";
