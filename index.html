@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title></title>
+	<title>Grandfather's Clock JS by Sarah Vessels</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -25,6 +25,116 @@
 			Thanks to <a href="http://webtreats.mysitemyway.com/8-tileable-dark-wood-texture-patterns/">Web Treats</a> for the wood texture
 		</p>
 	</div>
+	<script type="text/template" id="start-view-template">
+		<div class="foundations clock-face">
+			<div id="foundation-5" class="foundation"></div>
+			<div id="foundation-6" class="foundation"></div>
+			<div id="foundation-7" class="foundation"></div>
+			<div id="foundation-8" class="foundation"></div>
+			<div id="foundation-9" class="foundation"></div>
+			<div id="foundation-10" class="foundation"></div>
+			<div id="foundation-11" class="foundation"></div>
+			<div id="foundation-12" class="foundation"></div>
+			<div id="foundation-1" class="foundation"></div>
+			<div id="foundation-2" class="foundation"></div>
+			<div id="foundation-3" class="foundation"></div>
+			<div id="foundation-4" class="foundation"></div>
+		</div>
+	</script>
+	<script type="text/template" id="card-view-template">
+		<div class="card card-<%= card_name %>-of-<%= suit_name %>s">
+			<div class="card-name top"></div>
+			<div class="suit-container <%= suit_name %>"></div>
+			<div class="card-name bottom"></div>
+		</div>
+	</script>
+	<script type="text/template" id="suit-template-1">
+		<div class="suit suit-1"></div>
+	</script>
+	<script type="text/template" id="suit-template-2">
+		<div class="suit suit-1"></div>
+		<div class="suit suit-2"></div>
+	</script>
+	<script type="text/template" id="suit-template-3">
+		<div class="suit suit-1"></div>
+		<div class="suit suit-2"></div>
+		<div class="suit suit-3"></div>
+	</script>
+	<script type="text/template" id="suit-template-4">
+		<div class="suit suit-1"></div>
+		<div class="suit suit-2"></div>
+		<div class="suit suit-3"></div>
+		<div class="suit suit-4"></div>
+	</script>
+	<script type="text/template" id="suit-template-5">
+		<div class="suit suit-1"></div>
+		<div class="suit suit-2"></div>
+		<div class="suit suit-3"></div>
+		<div class="suit suit-4"></div>
+		<div class="suit suit-5"></div>
+	</script>
+	<script type="text/template" id="suit-template-6">
+		<div class="suit suit-1"></div>
+		<div class="suit suit-2"></div>
+		<div class="suit suit-3"></div>
+		<div class="suit suit-4"></div>
+		<div class="suit suit-5"></div>
+		<div class="suit suit-6"></div>
+	</script>
+	<script type="text/template" id="suit-template-7">
+		<div class="suit suit-1"></div>
+		<div class="suit suit-2"></div>
+		<div class="suit suit-3"></div>
+		<div class="suit suit-4"></div>
+		<div class="suit suit-5"></div>
+		<div class="suit suit-6"></div>
+		<div class="suit suit-7"></div>
+	</script>
+	<script type="text/template" id="suit-template-8">
+		<div class="suit suit-1"></div>
+		<div class="suit suit-2"></div>
+		<div class="suit suit-3"></div>
+		<div class="suit suit-4"></div>
+		<div class="suit suit-5"></div>
+		<div class="suit suit-6"></div>
+		<div class="suit suit-7"></div>
+		<div class="suit suit-8"></div>
+	</script>
+	<script type="text/template" id="suit-template-9">
+		<div class="suit suit-1"></div>
+		<div class="suit suit-2"></div>
+		<div class="suit suit-3"></div>
+		<div class="suit suit-4"></div>
+		<div class="suit suit-5"></div>
+		<div class="suit suit-6"></div>
+		<div class="suit suit-7"></div>
+		<div class="suit suit-8"></div>
+		<div class="suit suit-9"></div>
+	</script>
+	<script type="text/template" id="suit-template-10">
+		<div class="suit suit-1"></div>
+		<div class="suit suit-2"></div>
+		<div class="suit suit-3"></div>
+		<div class="suit suit-4"></div>
+		<div class="suit suit-5"></div>
+		<div class="suit suit-6"></div>
+		<div class="suit suit-7"></div>
+		<div class="suit suit-8"></div>
+		<div class="suit suit-9"></div>
+		<div class="suit suit-10"></div>
+	</script>
+	<script type="text/template" id="suit-template-jack">
+		<div class="suit jack"></div>
+	</script>
+	<script type="text/template" id="suit-template-queen">
+		<div class="suit queen"></div>
+	</script>
+	<script type="text/template" id="suit-template-king">
+		<div class="suit king"></div>
+	</script>
+	<script type="text/template" id="suit-template-ace">
+		<div class="suit ace"></div>
+	</script>
 	<script src="js/libs/jquery-1.7.2.min.js"></script>	
 	<script src="js/libs/underscore-min.js"></script>
 	<script src="js/libs/backbone.js"></script>
@@ -32,20 +142,8 @@
 	<script src="js/models/card.js"></script>
 	<script src="js/models/deck.js"></script>
 	<script src="js/views/start-view.js"></script>
-	<script type="text/template" id="start-view-template">
-		<div id="foundation-12" class="foundation"></div>
-		<div id="foundation-11" class="foundation"></div>
-		<div id="foundation-10" class="foundation"></div>
-		<div id="foundation-9" class="foundation"></div>
-		<div id="foundation-8" class="foundation"></div>
-		<div id="foundation-7" class="foundation"></div>
-		<div id="foundation-6" class="foundation"></div>
-		<div id="foundation-5" class="foundation"></div>
-		<div id="foundation-4" class="foundation"></div>
-		<div id="foundation-3" class="foundation"></div>
-		<div id="foundation-2" class="foundation"></div>
-		<div id="foundation-1" class="foundation"></div>
-	</script>
+	<script src="js/views/suit-view.js"></script>
+	<script src="js/views/card-view.js"></script>
 	<script src="js/app.js"></script>
 </body>
 </html>

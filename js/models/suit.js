@@ -8,7 +8,7 @@ Suit = Backbone.Model.extend({
 		}
 	},
 	initialize: function() {
-		console.debug("Suit " + this.get('name') + " initialized");
+		//console.debug("Suit " + this.get('name') + " initialized");
 	},
 	getColor: function() {
 		var name = this.get('name');
