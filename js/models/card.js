@@ -27,9 +27,12 @@ Card = Backbone.Model.extend({
 	},
 	equals: function(other) {
 		return this.compare(other) == 0;
+	},
+	str: function() {
+		return this.get('name') + ' of ' + this.get('suit').get('name') + 's';
 	}
 }, {
 	getCardNames: function() {
-		return ['ace', 'queen', 'king', 'jack', '2', '3', '4', '5', '6', '7', '8', '9'];
+		return ['ace', 'queen', 'king', 'jack', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 	}
 });

@@ -6,9 +6,7 @@ Deck = Backbone.Model.extend({
 		console.debug("Deck initialized with " + this.size() + " cards");
 	},
 	getCard: function() {
-		var card = this.get('cards').shift();
-		console.debug("\tGot " + card.get('name') + " of " + card.get('suit').get('name') + "s");
-		return card;
+		return this.get('cards').shift();
 	},
 	size: function() {
 		return this.get('cards').length;

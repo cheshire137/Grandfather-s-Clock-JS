@@ -5,7 +5,7 @@
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
 audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 audio:not([controls]) { display: none; }
-[hidden] { display: none; }
+[hidden], .hidden { display: none; }
 
 html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 html, button, input, select, textarea { font-family: sans-serif; color: #222; }
@@ -304,7 +304,6 @@ body {
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
-	cursor: pointer;
 }
 	.card .card-name {
 		line-height: 1;
@@ -405,6 +404,16 @@ body {
 .card-king .card-name:before {
 	content: "K";
 }
+.card-king.card-heart .suit-container {
+	background: url('../img/king-hearts.png') no-repeat center center;
+}
+.card-king.card-spade .suit-container {
+	background: url('../img/king-spades.png') no-repeat center center;
+}
+.card-king .suit-spade .suit:before,
+.card-king .suit-heart .suit:before {
+	content: "";
+}
 .card-queen .card-name:before {
 	content: "Q";
 }
@@ -446,6 +455,9 @@ body {
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 }
+	.foundation .card-container:last-child .card {
+		cursor: pointer;
+	}
 #foundation-12 {
 	margin-left: -1.25in;
 }
