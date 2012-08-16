@@ -7,10 +7,11 @@ CardView = Backbone.View.extend({
 		var card = this.options.card;
 		var cardName = card.get('name');
 		var suitName = card.get('suit').get('name');
-		if (cardName == 'king' && suitName == 'diamond') {
-			console.log("SVGCardView for king of diamonds");
-			var svgCardView = new SVGCardView({el: this.el, card: card});
-			return;
+		if (suitName == 'diamond' || suitName == 'club') {
+			if ($.inArray(cardName, ['king', 'jack', 'queen']) != -1) {
+				var svgCardView = new SVGCardView({el: this.el, card: card});
+				return;
+			}
 		}
 		var variables = {card_name: cardName, suit_name: suitName};
 		var template = _.template($('#card-view-template').html(), variables);
