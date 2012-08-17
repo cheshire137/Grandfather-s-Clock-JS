@@ -323,7 +323,7 @@ body {
 	.card .suit-container {
 		position: relative;
 		width: 1.2in;
-		margin: 0 auto;
+		margin: 0 0 0 0.09in;
 		top: 0.2in;
 		height: 1.56in;
 		overflow: hidden;
@@ -366,30 +366,276 @@ body {
 	-o-transform: rotate(180deg);
 	-ms-transform: rotate(180deg);
 	-webkit-transform: rotate(180deg);
+	margin-top: 0.05in;
 }
 .card-4 .card-name:before {
 	content: "4";
 }
+.card-4 .suit-container .suit {
+	position: absolute;
+	font-size: 0.5in;
+}
+.card-4 .suit-1,
+.card-4 .suit-3 {
+	left: 0.1in;
+}
+.card-4 .suit-2,
+.card-4 .suit-4 {
+	right: 0.1in;
+}
+.card-4 .suit-3,
+.card-4 .suit-4 {
+	bottom: 0;
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
 .card-5 .card-name:before {
 	content: "5";
+}
+.card-5 .suit-container .suit {
+	position: absolute;
+	font-size: 0.4in;
+}
+.card-5 .suit-1,
+.card-5 .suit-2 {
+	top: 0;
+}
+.card-5 .suit-1,
+.card-5 .suit-4 {
+	left: 0.1in;
+}
+.card-5 .suit-2,
+.card-5 .suit-5 {
+	right: 0.1in;
+}
+.card-5 .suit-3 {
+	left: 50%;
+	margin-left: -0.1in;
+	top: 0.54in;
+}
+.card-5 .suit-4,
+.card-5 .suit-5 {
+	bottom: 0;
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
 }
 .card-6 .card-name:before {
 	content: "6";
 }
+.card-6 .suit-container .suit {
+	position: absolute;
+	font-size: 0.4in;
+}
+.card-6 .suit-1,
+.card-6 .suit-3,
+.card-6 .suit-5 {
+	left: 0.1in;
+}
+.card-6 .suit-2,
+.card-6 .suit-4,
+.card-6 .suit-6 {
+	right: 0.1in;
+}
+.card-6 .suit-3,
+.card-6 .suit-4 {
+	top: 0.56in;
+}
+.card-6 .suit-5,
+.card-6 .suit-6 {
+	bottom: 0;
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
 .card-7 .card-name:before {
 	content: "7";
+}
+.card-7 .suit-container .suit {
+	position: absolute;
+	font-size: 0.4in;
+}
+.card-7 .suit-1,
+.card-7 .suit-4,
+.card-7 .suit-6 {
+	left: 0.1in;
+}
+.card-7 .suit-2,
+.card-7 .suit-5,
+.card-7 .suit-7 {
+	right: 0.1in;
+}
+.card-7 .suit-3 {
+	top: 0.3in;
+	left: 50%;
+	margin-left: -0.1in;
+}
+.card-7 .suit-4,
+.card-7 .suit-5 {
+	top: 0.56in;
+}
+.card-7 .suit-6,
+.card-7 .suit-7 {
+	bottom: 0;
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
 }
 .card-8 .card-name:before {
 	content: "8";
 }
+.card-8 .suit-container .suit {
+	position: absolute;
+	font-size: 0.4in;
+}
+.card-8 .suit-1,
+.card-8 .suit-3,
+.card-8 .suit-5,
+.card-8 .suit-7 {
+	left: 0.1in;
+}
+.card-8 .suit-2,
+.card-8 .suit-4,
+.card-8 .suit-6,
+.card-8 .suit-8 {
+	right: 0.1in;
+}
+.card-8 .suit-3,
+.card-8 .suit-4 {
+	top: 0.37in;
+}
+.card-8 .suit-5,
+.card-8 .suit-6,
+.card-8 .suit-7,
+.card-8 .suit-8 {
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
+.card-8 .suit-5,
+.card-8 .suit-6 {
+	top: 0.79in;
+}
+.card-8 .suit-7,
+.card-8 .suit-8 {
+	bottom: 0;
+}
 .card-9 .card-name:before {
 	content: "9";
+}
+.card-9 .suit-container .suit {
+	position: absolute;
+	font-size: 0.35in;
+}
+.card-9 .suit-1,
+.card-9 .suit-4,
+.card-9 .suit-6,
+.card-9 .suit-8 {
+	left: 0.1in;
+}
+.card-9 .suit-2,
+.card-9 .suit-5,
+.card-9 .suit-7,
+.card-9 .suit-9 {
+	right: 0.1in;
+}
+.card-9 .suit-3 {
+	left: 50%;
+	margin-left: -0.11in;
+	top: 0.2in;
+}
+.card-9 .suit-4,
+.card-9 .suit-5 {
+	top: 0.37in;
+}
+.card-9 .suit-6,
+.card-9 .suit-7,
+.card-9 .suit-8,
+.card-9 .suit-9 {
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
+.card-9 .suit-6,
+.card-9 .suit-7 {
+	top: 0.79in;
+}
+.card-9 .suit-8,
+.card-9 .suit-9 {
+	bottom: 0;
 }
 .card-10 .card-name:before {
 	content: "10";
 }
+.card-10 .suit-container .suit {
+	position: absolute;
+	font-size: 0.35in;
+}
+.card-10 .suit-1,
+.card-10 .suit-2 {
+	top: 0.05in;
+}
+.card-10 .suit-1,
+.card-10 .suit-4,
+.card-10 .suit-6,
+.card-10 .suit-9 {
+	left: 0.1in;
+}
+.card-10 .suit-2,
+.card-10 .suit-5,
+.card-10 .suit-7,
+.card-10 .suit-10 {
+	right: 0.1in;
+}
+.card-10 .suit-3,
+.card-10 .suit-8 {
+	left: 50%;
+	margin-left: -0.11in;
+}
+.card-10 .suit-3 {
+	top: 0.25in;
+}
+.card-10 .suit-4,
+.card-10 .suit-5 {
+	top: 0.41in;
+}
+.card-10 .suit-6,
+.card-10 .suit-7,
+.card-10 .suit-8,
+.card-10 .suit-9,
+.card-10 .suit-10 {
+	-moz-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
+.card-10 .suit-6,
+.card-10 .suit-7 {
+	bottom: 0.41in;
+}
+.card-10 .suit-8 {
+	bottom: 0.25in;
+}
+.card-10 .suit-9,
+.card-10 .suit-10 {
+	bottom: 0.05in;
+}
 .card-ace .card-name:before {
 	content: "A";
+}
+.card-ace .suit-container .suit {
+	position: absolute;
+	left: 50%;
+	top: 0.41in;
+	font-size: 0.7in;
+	margin-left: -0.18in;
 }
 .card-club,
 .card-spade {
@@ -433,6 +679,11 @@ body {
 	color: #C69974;
 	margin-top: 0.5in;
 }
+	#credits:after {
+		display: table;
+		content: "";
+		clear: left;
+	}
 	#credits a,
 	#credits a:link,
 	#credits a:active,
@@ -446,6 +697,7 @@ body {
 	#credits p {
 		padding: 1em;
 		margin: 0;
+		float: left;
 	}
 .foundation {
 	width: 1.5in;
