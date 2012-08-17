@@ -788,11 +788,11 @@ body {
 				min-width: 1.4in;
 				min-height: 1.96in;
 			}
-			.tableau .column .foundation .card-container-1,
-			.tableau .column .foundation .card-container-2,
-			.tableau .column .foundation .card-container-3,
-			.tableau .column .foundation .card-container-4 {
+			.tableau .column .foundation .card-container {
 				margin-bottom: -1.5in;
+			}
+			.tableau .column .foundation .card-container:last-child {
+				margin-bottom: 0;
 			}
 .tableau:after {
 	content: "";

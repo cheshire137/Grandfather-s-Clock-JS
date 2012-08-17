@@ -29,23 +29,50 @@ CardView = Backbone.View.extend({
 			this.onClockCardClick(cardEl);
 		}
 	},
-	onTableauCardClick: function(cardEl) {
-		var cardContainer = cardEl.parent();
+	onTableauCardClick: function(newSelectedCard) {
+		var cardContainer = newSelectedCard.parent();
 		if (!cardContainer.is(':last-child')) {
 			return;
 		}
+		var existingSelectedCard = $('.card.selected');
+		if (existingSelectedCard.length > 0) {
+			if (this.canMoveCardInTableau(existingSelectedCard, newSelectedCard)) {
+				$('.clock-face').removeClass('tableau-card-selected');
+				var foundation = newSelectedCard.closest('.foundation');
+				this.moveCardInTableau(existingSelectedCard, foundation);
+				return;
+			}
+		}
 		$('.card.selected').removeClass('selected');
-		cardEl.addClass('selected');
+		newSelectedCard.addClass('selected');
 		$('.clock-face').addClass('tableau-card-selected');
 	},
 	onClockCardClick: function(clockCardEl) {
 		var cardToMoveEl = $('.tableau .card.selected');
-		var foundation = clockCardEl.parent();
-		if (this.canMoveCard(cardToMoveEl, clockCardEl)) {
+		if (this.canMoveCardToClock(cardToMoveEl, clockCardEl)) {
+			var foundation = clockCardEl.parent();
 			this.moveCardToClock(cardToMoveEl, foundation);
 		}
 	},
-	canMoveCard: function(cardToMoveEl, clockCardEl) {
+	hasOneStepDifference: function(cardName1, cardName2) {
+		if (
+			cardName1 == 'ace' && cardName2 == '2' ||
+			cardName1 == '10' && cardName2 == 'jack' ||
+			cardName1 == 'jack' && cardName2 == 'queen' ||
+			cardName1 == 'queen' && cardName2 == 'king'
+		) {
+			return true;
+		}
+		var cardNum1 = parseInt(cardName1, 10);
+		var cardNum2 = parseInt(cardName2, 10);
+		return cardNum2 - 1 == cardNum1;
+	},
+	canMoveCardInTableau: function(cardToMove, cardUnderneath) {
+		var cardToMoveName = cardToMove.attr('data-card-name');
+		var cardUnderneathName = cardUnderneath.attr('data-card-name');
+		return this.hasOneStepDifference(cardToMoveName, cardUnderneathName);
+	},
+	canMoveCardToClock: function(cardToMoveEl, clockCardEl) {
 		var clockCardSuit = clockCardEl.attr('data-suit-name');
 		var cardToMoveSuit = cardToMoveEl.attr('data-suit-name');
 		if (cardToMoveSuit != clockCardSuit) {
@@ -53,17 +80,22 @@ CardView = Backbone.View.extend({
 		}
 		var clockCardName = clockCardEl.attr('data-card-name');
 		var cardToMoveName = cardToMoveEl.attr('data-card-name');
-		if (
-			clockCardName == 'ace' && cardToMoveName == '2' ||
-			clockCardName == '10' && cardToMoveName == 'jack' ||
-			clockCardName == 'jack' && cardToMoveName == 'queen' ||
-			clockCardName == 'queen' && cardToMoveName == 'king'
-		) {
+		if (cardToMoveName == 'ace' && clockCardName == 'king') {
 			return true;
 		}
-		var clockCardNum = parseInt(clockCardName, 10);
-		var cardToMoveNum = parseInt(cardToMoveName, 10);
-		return cardToMoveNum - 1 == clockCardNum;
+		return this.hasOneStepDifference(clockCardName, cardToMoveName);
+	},
+	moveCardInTableau: function(cardToMove, foundation) {
+		var cardContainer = cardToMove.parent();
+		foundation.append(cardContainer);
+		cardContainer[0].className.replace(
+			/(card-container-)(\d+)/,
+			function(fullMatch, prefix, digit) {
+				var newContainerNum = parseInt(digit, 10) + 1;
+				return prefix + newContainerNum;
+			}
+		);
+		cardToMove.removeClass('selected');
 	},
 	moveCardToClock: function(cardToMoveEl, foundation) {
 		var cardContainer = cardToMoveEl.parent();
