@@ -782,7 +782,7 @@ body.wood {
 	transition: all 0.25s ease-in-out;
 }
 #options {
-	background-color: #313131;
+	background: #313131 url('../img/low_contrast_linen.png');
 	position: relative;
 	left: 0;
 	top: 0;
