@@ -26,6 +26,7 @@ StartView = Backbone.View.extend({
 			var cardView = new CardView({el: foundation, card: card});
 			foundation = foundation.next('.foundation');
 		});
+		this.distributeFace();
 		var tableauDeck = Deck.generate(startingCards);
 		tableauDeck.shuffle();
 		$('.tableau .column', $(this.el)).each(function() {
@@ -33,5 +34,29 @@ StartView = Backbone.View.extend({
 			var tableauColumn = TableauColumn.create(tableauDeck);
 			var tableauView = new TableauColumnView({el: columnDiv, cards: tableauColumn});
 		});
+	},
+	distributeFace: function() {
+		var viewportWidth = $(window).width();
+		var viewportHeight = $(window).height();
+		var minResolution = Math.min(viewportWidth, viewportHeight);
+		var clockFace = $('.clock-face');
+		var width = clockFace.width();
+		var height = minResolution;
+		clockFace.css('height', height + 'px');
+		var radius = Math.round(minResolution / 2);
+		var angle = 0;
+		var step = (2 * Math.PI) / 12;
+		var yOffsets = [];
+		$('.clock-face .foundation').each(function() {
+			var foundation = $(this);
+			var x = Math.round(width / 2 + radius * Math.cos(angle) - foundation.width() / 2);
+			var y = Math.round(height / 2 + radius * Math.sin(angle) - foundation.height() / 2);
+			yOffsets.push(y);
+			foundation.css({left: x + 'px', top: y + 'px'});
+			angle += step;
+		});
+		var clockFaceOffset = Math.abs(Math.min.apply(null, yOffsets));
+		clockFace.css('top', clockFaceOffset + 'px');
+		clockFace.css('height', (height + clockFaceOffset * 2) + 'px');
 	}
 });

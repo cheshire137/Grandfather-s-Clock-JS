@@ -715,54 +715,31 @@ body {
 		cursor: pointer;
 	}
 #foundation-12 {
-	margin-left: -1.25in;
 }
 #foundation-11 {
-	margin-left: -3in;
-	top: 0.3in;
 }
 #foundation-1 {
-	margin-left: 0.5in;
-	top: 0.3in;
 }
 #foundation-10 {
-	margin-left: -4.75in;
-	top: 0.6in;
 }
 #foundation-2 {
-	margin-left: 2.25in;
-	top: 0.6in;
 }
 #foundation-9 {
-	margin-left: -6.5in;
-	top: 0.9in;
 }
 #foundation-3 {
-	margin-left: 4in;
-	top: 0.9in;
 }
 #foundation-8 {
-	margin-left: -4.75in;
-	top: 2.95in;
 }
 #foundation-4 {
-	margin-left: 2.25in;
-	top: 2.95in;
 }
 #foundation-7 {
-	margin-left: -3in;
-	top: 3.2in;
 }
 #foundation-5 {
-	margin-left: 0.5in;
-	top: 3.2in;
 }
 #foundation-6 {
-	margin-left: -1.25in;
-	top: 3.45in;
 }
-.foundations {
-	height: 6in;
+.foundations.clock-face {
+	position: relative;
 }
 .suit-club .suit:before {
 	content: "\2663";
