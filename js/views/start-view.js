@@ -1,6 +1,10 @@
 StartView = Backbone.View.extend({
 	initialize: function() {
-		this.render();
+		var view = this;
+		view.render();
+		$(window).on('resize', function() {
+			view.onResize();
+		});
 		//console.debug("StartView initialized");
 	},
 	render: function() {
@@ -28,6 +32,7 @@ StartView = Backbone.View.extend({
 			var cardView = new CardView({el: foundation, card: card});
 			foundation = foundation.next('.foundation');
 		});
+		this.setClockCardSize();
 		this.distributeFace();
 		var tableauDeck = Deck.generate(startingCards);
 		tableauDeck.shuffle();
@@ -36,15 +41,31 @@ StartView = Backbone.View.extend({
 			var tableauColumn = TableauColumn.create(tableauDeck);
 			var tableauView = new TableauColumnView({el: columnDiv, cards: tableauColumn});
 		});
-		this.setCardSize();
+		this.setTableauCardSize();
 	},
-	setCardSize: function() {
+	setClockCardSize: function() {
 		var cardRatio = 1.96 / 1.4;
-		var cardContainer = $('.tableau .column .foundation .card-container').first();
+		var width = Math.round($('.clock-face').width() / 6.0);
+		var height = width * cardRatio;
+		$('.clock-face .foundation').css({width: width + 'px', height: height + 'px'});
+	},
+	setTableauCardSize: function() {
+		var cardRatio = 1.96 / 1.4;
+		/*var cardContainer = $('.tableau .column .foundation .card-container').first();
 		var cardWidth = cardContainer.width();
 		var cardHeight = cardWidth * cardRatio;
 		//console.log("Card ratio: " + cardRatio + ", width: " + cardWidth + ", height: " + cardHeight);
-		$('.tableau .column .foundation .card-container').css('height', cardHeight + 'px');
+		$('.tableau .column .foundation .card-container').css('height', cardHeight + 'px');*/
+		var width = Math.round($('.tableau').width() / 5.0);
+		var height = width * cardRatio;
+		$('.tableau .column .foundation').css('width', width + 'px');
+		$('.tableau .column .foundation .card-container').css({width: width + 'px', height: height + 'px'});
+	},
+	onResize: function() {
+		$('.clock-face, .tableau').css('height', $(window).height() + 'px');
+		this.setClockCardSize();
+		this.distributeFace();
+		this.setTableauCardSize();
 	},
 	distributeFace: function() {
 		var viewportWidth = $(window).width();
