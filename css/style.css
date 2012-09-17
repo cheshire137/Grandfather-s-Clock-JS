@@ -315,7 +315,7 @@ nav a:hover{
 	width: 17em;
 }
 body {
-	background: url('../img/webtreats_wood-pattern7-512.png');
+	background-image: url('../img/felt.png');
 }
 body.felt {
 	background-image: url('../img/felt.png');
@@ -690,6 +690,17 @@ body.wood {
 	box-shadow: inset 0px 0px 10px 0px #1433AC;
 	background-color: #E1F2FF;
 }
+.clock-face {
+	width: 38%;
+	float: left;
+	margin-left: 6%;
+	position: relative;
+}
+.clock-face + .tableau {
+	width: 50%;
+	float: right;
+	position: relative;
+}
 .clock-face .foundation .card {
 	position: absolute;
 	left: 0.05in;
@@ -704,12 +715,18 @@ body.wood {
 	top: 0.5em;
 	z-index: 1;
 }
+#container:after {
+	content: "";
+	display: table;
+	clear: both;
+}
 #credits {
 	width: 100%;
 	background-color: rgba(0,0,0,0.5);
 	font-size: 12px;
 	color: #C69974;
 	margin-top: 0.5in;
+	position: relative;
 }
 	#credits:after {
 		display: table;
@@ -836,7 +853,7 @@ body.wood {
 		}
 #options-pull-tab {
 	position: absolute;
-	right: 10%;
+	right: 10px;
 	display: block;
 	background-color: rgba(0,0,0,0.5);
 	z-index: 3;
@@ -891,30 +908,40 @@ body.wood {
 		height: 100%;
 	}
 .tableau {
-	width: 14in;
-	margin: 0 auto;
 }
 	.tableau .column {
-		width: 1.5in;
 		float: left;
-		margin-right: 0.25in;
+		margin: 0 0.5% 1% 0.5%;
+		position: relative;
+		width: 23%;
 	}
 		.tableau .column .foundation {
 			position: relative;
 			height: auto;
-			min-height: 2.1in;
 			left: 0;
+			margin-left: auto;
+			margin-right: auto;
+			width: 95%;
 		}
 			.tableau .column .foundation .card-container {
-				min-width: 1.4in;
-				min-height: 1.96in;
+				position: relative;
+				margin-bottom: -120%;
+				width: 100%;
+				margin-left: auto;
+				margin-right: auto;
 			}
-			.tableau .column .foundation .card-container {
-				margin-bottom: -1.5in;
-			}
+				.tableau .column .foundation .card-container .card {
+					width: inherit;
+					height: inherit;
+					position: absolute;
+					overflow: hidden;
+				}
 			.tableau .column .foundation .card-container:last-child {
 				margin-bottom: 0;
 			}
+	.tableau .column-5 {
+		clear: left;
+	}
 .tableau:after {
 	content: "";
 	display: table;

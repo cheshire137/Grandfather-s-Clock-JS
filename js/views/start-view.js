@@ -5,7 +5,9 @@ StartView = Backbone.View.extend({
 	},
 	render: function() {
 		var template = _.template($('#start-view-template').html(), {});
-		$(this.el).html(template);
+		var startViewContainer = $(this.el);
+		startViewContainer.html(template);
+		$('.clock-face, .tableau', startViewContainer).css('height', $(window).height() + 'px');
 		var startingCards = [
 			new Card({name: '2', suit: new Suit({name: 'heart'})}),
 			new Card({name: '3', suit: new Suit({name: 'spade'})}),
@@ -20,7 +22,7 @@ StartView = Backbone.View.extend({
 			new Card({name: 'queen', suit: new Suit({name: 'diamond'})}),
 			new Card({name: 'king', suit: new Suit({name: 'club'})})
 		];
-		var startingFoundation = $('#foundation-5', $(this.el));
+		var startingFoundation = $('#foundation-5', startViewContainer);
 		var foundation = startingFoundation;
 		$.each(startingCards, function(i, card) {
 			var cardView = new CardView({el: foundation, card: card});
@@ -29,21 +31,29 @@ StartView = Backbone.View.extend({
 		this.distributeFace();
 		var tableauDeck = Deck.generate(startingCards);
 		tableauDeck.shuffle();
-		$('.tableau .column', $(this.el)).each(function() {
+		$('.tableau .column', startViewContainer).each(function() {
 			var columnDiv = $(this);
 			var tableauColumn = TableauColumn.create(tableauDeck);
 			var tableauView = new TableauColumnView({el: columnDiv, cards: tableauColumn});
 		});
+		this.setCardSize();
+	},
+	setCardSize: function() {
+		var cardRatio = 1.96 / 1.4;
+		var cardContainer = $('.tableau .column .foundation .card-container').first();
+		var cardWidth = cardContainer.width();
+		var cardHeight = cardWidth * cardRatio;
+		//console.log("Card ratio: " + cardRatio + ", width: " + cardWidth + ", height: " + cardHeight);
+		$('.tableau .column .foundation .card-container').css('height', cardHeight + 'px');
 	},
 	distributeFace: function() {
 		var viewportWidth = $(window).width();
 		var viewportHeight = $(window).height();
-		var minResolution = Math.min(viewportWidth, viewportHeight);
 		var clockFace = $('.clock-face');
 		var width = clockFace.width();
-		var height = minResolution;
-		clockFace.css('height', height + 'px');
-		var radius = Math.round(minResolution / 2);
+		var height = clockFace.height();
+		var minResolution = Math.min(width, height);
+		var radius = Math.floor(minResolution / 2);
 		var angle = 0;
 		var step = (2 * Math.PI) / 12;
 		var yOffsets = [];
@@ -55,8 +65,5 @@ StartView = Backbone.View.extend({
 			foundation.css({left: x + 'px', top: y + 'px'});
 			angle += step;
 		});
-		var clockFaceOffset = Math.abs(Math.min.apply(null, yOffsets));
-		clockFace.css('top', clockFaceOffset + 'px');
-		clockFace.css('height', (height + clockFaceOffset * 2) + 'px');
 	}
 });

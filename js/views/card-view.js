@@ -7,15 +7,13 @@ CardView = Backbone.View.extend({
 		var card = this.options.card;
 		var cardName = card.get('name');
 		var suitName = card.get('suit').get('name');
-		if ($.inArray(cardName, ['king', 'jack', 'queen']) != -1) {
-			var svgCardView = new SVGCardView({el: this.el, card: card});
-			return;
-		}
+		
 		var variables = {card_name: cardName, suit_name: suitName};
-		var template = _.template($('#card-view-template').html(), variables);
-		$(this.el).html(template);
-		var suitContainer = $('.card .suit-container', $(this.el));
-		var suitView = new SuitView({el: suitContainer, card: card});
+		var containerTmpl = _.template($('#svg-card-container').html(), variables);
+		$(this.el).html(containerTmpl);
+		var svgCardSel = '#svg-' + cardName + '-' + suitName;
+		var svgCardTmpl = _.template($(svgCardSel).html(), {});
+		$('.svg-card', $(this.el)).html(svgCardTmpl);
 	},
 	events: {
 		"click .card": "onCardClick"
